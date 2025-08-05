@@ -67,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // Verificar si se abrió desde una notificación (app terminada)
     RemoteMessage? initialMessage = await messaging.getInitialMessage();
     if (initialMessage != null) {
-      print("App iniciada desde notificación: ${initialMessage.notification?.title}");
+      print(
+          "App iniciada desde notificación: ${initialMessage.notification?.title}");
     }
   }
 
@@ -86,6 +87,11 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: const Icon(Icons.vpn_key),
             title: const Text('Registro de Tokens'),
             onTap: () => Navigator.pushNamed(context, '/tokens'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.map),
+            title: const Text('Ver Mapa'),
+            onTap: () => Navigator.pushNamed(context, '/map'),
           ),
           const Divider(),
           Padding(

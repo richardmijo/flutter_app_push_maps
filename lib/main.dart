@@ -5,6 +5,9 @@ import 'package:flutter_app_push_maps/features/device_tokens/data/datasources/de
 import 'package:flutter_app_push_maps/features/device_tokens/data/repositories/device_token_repository.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/presentation/device_token_provider.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/presentation/device_token_screen.dart';
+import 'package:flutter_app_push_maps/features/maps/data/geo_data_source.dart';
+import 'package:flutter_app_push_maps/features/maps/data/geo_provider.dart';
+import 'package:flutter_app_push_maps/features/maps/presentation/map_screen.dart';
 import 'package:flutter_app_push_maps/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()..fetchUsers()),
         ChangeNotifierProvider(create: (_) => DeviceTokenProvider(deviceTokenRepository)..loadTokens()),
+        ChangeNotifierProvider(create: (_) => GeoProvider (GeoDataSource(dioClient: dioClient))),
       ],
       child: MaterialApp(
         title: 'Flutter App',
@@ -48,6 +52,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const HomeScreen(),
           '/users': (context) => const UserScreen(),
           '/tokens': (context) => const DeviceTokenScreen(),
+          '/map': (context) => const MapScreen(),
         },
       ),
     );
