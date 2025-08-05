@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/data/datasources/device_token_remote_data_source.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/data/repositories/device_token_repository.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/presentation/device_token_provider.dart';
+import 'package:flutter_app_push_maps/features/device_tokens/presentation/device_token_screen.dart';
 import 'package:flutter_app_push_maps/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomeScreen(),
           '/users': (context) => const UserScreen(),
-          // '/tokens': (context) => const DeviceTokenScreen(),
+          '/tokens': (context) => const DeviceTokenScreen(),
         },
       ),
     );
