@@ -9,13 +9,24 @@ class DeviceTokenRemoteDataSource {
   DeviceTokenRemoteDataSource(this.dioClient);
 
   Future<void> registerToken(DeviceTokenModel token) async {
-    await dioClient.instance.post('/device-tokens', data: token.toJson());
+    print(token);
+    await dioClient.instance.post('/tokens', data: token.toJson());
   }
 
   Future<List<DeviceTokenModel>> getTokens() async {
-    final response = await dioClient.instance.get('/device-tokens');
+    final response = await dioClient.instance.get('/tokens');
     return (response.data as List)
         .map((json) => DeviceTokenModel.fromJson(json))
         .toList();
   }
+
+
+  Future<List<DeviceTokenModel>> getTokensByUser(String userId) async {
+  final response = await dioClient.instance.get('/tokens/$userId');
+  return (response.data as List)
+        .map((json) => DeviceTokenModel.fromJson(json))
+        .toList();
+  // Resto del parseo...
+}
+
 }

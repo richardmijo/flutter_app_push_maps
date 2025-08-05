@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/data/datasources/device_token_remote_data_source.dart';
 import 'package:flutter_app_push_maps/features/device_tokens/data/repositories/device_token_repository.dart';
@@ -15,7 +16,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   runApp(const MyApp());
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('Notificación en segundo plano: ${message.messageId}');
 }
 
 class MyApp extends StatelessWidget {

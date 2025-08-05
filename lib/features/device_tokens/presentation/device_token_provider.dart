@@ -20,7 +20,7 @@ class DeviceTokenProvider with ChangeNotifier {
     final token = await fcm.getToken();
     if (token != null) {
       currentToken = token;
-      await repository.registerToken(DeviceTokenModel(token: token));
+      await repository.registerToken(DeviceTokenModel(token: token, userId: 1));
       await loadTokens();
     }
   }
