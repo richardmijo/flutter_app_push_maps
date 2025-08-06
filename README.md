@@ -90,8 +90,65 @@ La aplicación se conecta al backend desarrollado en:
 http://<tu_ip_local>:3000/api
 ```
 
+## Configuración de Google Maps API Key
+
+Para que el mapa funcione correctamente en Android y/o iOS, necesitas una clave de API de Google Maps. A continuación te explico cómo obtenerla y configurarla.
+
+### Crear cuenta en Google Cloud Platform (GCP)
+- Ingresa a: https://console.cloud.google.com
+- Inicia sesión con tu cuenta de Google
+- Haz clic en "Seleccionar proyecto" y luego en "Nuevo proyecto"
+- Asigna un nombre a tu proyecto (por ejemplo: FlutterMapsApp) y crea el proyecto
+
+### Habilitar la API de Google Maps
+
+- Con tu proyecto seleccionado, ve a: https://console.cloud.google.com/apis/library/maps-backend.googleapis.com
+- Haz clic en "Habilitar"
+- Repite el proceso para:
+- Maps SDK for Android
+- Maps SDK for iOS
+- Geocoding API (opcional para traducción de direcciones)
+
+### Crear la clave de API
+
+- Ve al menú: APIs y servicios → Credenciales
+- Haz clic en “Crear credenciales” → “Clave de API”
+- Copia la clave generada y colócala en tu proyecto Flutter
+
+### Configurar la clave en Flutter
+
+Para Android:
+Edita el archivo android/app/src/main/AndroidManifest.xml y dentro de <application> agrega:
+
+```bash
+<meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="TU_API_KEY_AQUÍ"/>
+```
+Para iOS:
+Abre ios/Runner/AppDelegate.swift o AppDelegate.m (según tu configuración) y asegúrate de que esté incluido:
+
+```bash
+GMSServices.provideAPIKey("TU_API_KEY_AQUÍ")
+```
+También puedes agregarlo a tu ios/Runner/Info.plist:
+
+```bash
+<key>GMSApiKey</key>
+<string>TU_API_KEY_AQUÍ</string>
+```
+
+### (Opcional) Restringir el uso de tu API Key
+Desde la consola de GCP, puedes:
+
+- Limitar por plataforma (Android, iOS)
+- Limitar por IP (si usas solo local)
+- Limitar por tipo de API (solo Maps, etc.)
+
+Esto ayuda a evitar que terceros abusen de tu clave.
+
+
 ### Autor
-**Richard Armijos**
-Docente – Universidad Internacional del Ecuador
-Materia: *Programación Móvil en Flutter*
+**Richard Armijos**  
+Docente – Universidad Internacional del Ecuador  
+Materia: *Programación Móvil en Flutter*  
 Loja, Ecuador
