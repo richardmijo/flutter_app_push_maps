@@ -89,6 +89,7 @@ La aplicación se conecta al backend desarrollado en:
 ```bash
 http://<tu_ip_local>:3000/api
 ```
+---
 
 ## Configuración de Google Maps API Key
 
@@ -97,22 +98,22 @@ Para que el mapa funcione correctamente en Android y/o iOS, necesitas una clave 
 ### Crear cuenta en Google Cloud Platform (GCP)
 - Ingresa a: https://console.cloud.google.com
 - Inicia sesión con tu cuenta de Google
-- Haz clic en "Seleccionar proyecto" y luego en "Nuevo proyecto"
+- Haz clic en *"Seleccionar proyecto"* y luego en *"Nuevo proyecto"*
 - Asigna un nombre a tu proyecto (por ejemplo: FlutterMapsApp) y crea el proyecto
 
 ### Habilitar la API de Google Maps
 
 - Con tu proyecto seleccionado, ve a: https://console.cloud.google.com/apis/library/maps-backend.googleapis.com
-- Haz clic en "Habilitar"
+- Haz clic en *"Habilitar"*
 - Repite el proceso para:
-- Maps SDK for Android
-- Maps SDK for iOS
-- Geocoding API (opcional para traducción de direcciones)
+    - Maps SDK for Android
+    - Maps SDK for iOS
+    - Geocoding API (opcional para traducción de direcciones)
 
 ### Crear la clave de API
 
-- Ve al menú: APIs y servicios → Credenciales
-- Haz clic en “Crear credenciales” → “Clave de API”
+- Ve al menú: *APIs y servicios* → *Credenciales*
+- Haz clic en *“Crear credenciales”* → *“Clave de API”*
 - Copia la clave generada y colócala en tu proyecto Flutter
 
 ### Configurar la clave en Flutter
